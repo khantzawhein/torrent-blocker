@@ -5,6 +5,9 @@ REPO_URL="https://github.com/khantzawhein/torrent-blocker.git"
 CLONE_DIR="$HOME/torrent-blocker"
 SCRIPT_NAME="blocker.sh"
 
+# Install IPSet
+sudo apt install ipset
+
 # Step 1: Clone the repository if it doesn't already exist
 if [ ! -d "$CLONE_DIR" ]; then
   echo "Cloning repository to $CLONE_DIR..."
