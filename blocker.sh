@@ -1,7 +1,7 @@
 #!/bin/bash
 BLOCKLIST_URL="https://raw.githubusercontent.com/khantzawhein/torrent-tracker-ips/refs/heads/main/extracted_ips.txt"
-PREVIOUS_BLOCKLIST="/root/previous_blocklist.txt"
-CURRENT_BLOCKLIST="/root/torrent-tracker-ips.txt"
+PREVIOUS_BLOCKLIST="./previous_blocklist.txt"
+CURRENT_BLOCKLIST="./torrent-tracker-ips.txt"
 IPTABLES="/sbin/iptables"
 IPSET="/sbin/ipset"
 BLOCKLIST_SET_NAME="torrent-trackers"
