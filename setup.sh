@@ -6,7 +6,7 @@ CLONE_DIR="$HOME/torrent-blocker"
 SCRIPT_NAME="blocker.sh"
 
 # Install IPSet
-sudo apt install ipset
+sudo apt install ipset -y
 
 # Step 1: Clone the repository if it doesn't already exist
 if [ ! -d "$CLONE_DIR" ]; then
