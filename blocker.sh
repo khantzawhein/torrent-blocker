@@ -5,6 +5,7 @@ CURRENT_BLOCKLIST="./torrent-tracker-ips.txt"
 IPTABLES="/sbin/iptables"
 IPSET="/sbin/ipset"
 BLOCKLIST_SET_NAME="torrent-trackers"
+NETFILTER_PERSISTENT="/sbin/netfilter-persistent"
 # Download the current blocklist
 curl -s $BLOCKLIST_URL -o $CURRENT_BLOCKLIST
 touch $PREVIOUS_BLOCKLIST
@@ -20,5 +21,7 @@ comm -23 <(sort $PREVIOUS_BLOCKLIST | sort | uniq) <(sort $CURRENT_BLOCKLIST | s
 done
 # Ensure the IPtables rule is in place
 $IPTABLES -C OUTPUT -m set --match-set $BLOCKLIST_SET_NAME dst -j DROP 2>/dev/null || $IPTABLES -I OUTPUT -m set --match-set $BLOCKLIST_SET_NAME dst -j DROP
+# Save the iptables rules
+$NETFILTER_PERSISTENT save
 # Save the current blocklist as the previous one for the next run
 cp $CURRENT_BLOCKLIST $PREVIOUS_BLOCKLIST
